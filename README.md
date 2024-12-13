@@ -1,5 +1,5 @@
 
-# Submission for Lab Project Assignment #2: Building a Cloud-Native App for Best Buy
+# Lab Project Assignment #2: Building a Cloud-Native App for Best Buy
 
 ### Student Id: 041109491
 ### Name: Bhupinder Singh
