@@ -93,19 +93,15 @@ This is a demo cloud-native application for Best Buy's online store.
    - Initial setup and message handling required changes to the codebase.
    - Resolved using Azure SDKs and thorough testing.
 
-2. **Persistent Storage**:
-   - Misconfigured PVCs caused issues with MongoDB data.
-   - Fixed by adjusting StorageClasses and resource limits.
-
-3. **AI-Service Latency**:
+2. **AI-Service Latency**:
    - Image generation caused delays during high traffic.
    - Mitigated with Redis caching and horizontal autoscaling.
 
-4. **Docker Image Optimization**:
+3. **Docker Image Optimization**:
    - Large image sizes affected deployment time.
    - Resolved with multi-stage builds and minimal base images.
 
-5. **CI/CD Pipeline Setup**:
+4. **CI/CD Pipeline Setup**:
    - Automation for builds and deployments posed initial challenges.
    - Overcame using GitHub Actions workflows.
 
