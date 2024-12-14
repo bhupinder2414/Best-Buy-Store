@@ -89,21 +89,25 @@ This is a demo cloud-native application for Best Buy's online store.
 ---
 
 ## Challenges Faced
-1. **Azure Service Bus Integration**:
-   - Initial setup and message handling required changes to the codebase.
-   - Resolved using Azure SDKs and thorough testing.
 
-2. **AI-Service Latency**:
-   - Image generation caused delays during high traffic.
-   - Mitigated with Redis caching and horizontal autoscaling.
+During the development and deployment of the Best Buy Cloud-Native Application, several challenges were encountered. These included technical, architectural, and deployment-related issues. Below are the key challenges faced:
 
-3. **Docker Image Optimization**:
-   - Large image sizes affected deployment time.
-   - Resolved with multi-stage builds and minimal base images.
+1. **AI Integration (GPT-4 and DALL-E)**:
+During the deployment of the AI-Service, I encountered a CrashLoopBackOff error, which means that the container started but failed repeatedly, causing Kubernetes to try and restart it multiple times. This typically happens when there is a failure in the container during its startup or runtime. Below are the specific troubleshooting steps and changes made to resolve the issue:
 
-4. **CI/CD Pipeline Setup**:
-   - Automation for builds and deployments posed initial challenges.
-   - Overcame using GitHub Actions workflows.
+   - Step 1: Check Logs for Error Details
+First I examined the logs of the pod to understand why the AI-Service was failing. The logs indicated that the service was having trouble connecting to the Azure OpenAI API due to a misconfiguration in the API key and endpoint environment variables.
+
+    - Step 2: After fixing the environment variables, I noticed that the AI-Service was still not able to start reliably, even with the correct API configuration. This was likely due to resource constraints. The AI-Service required significant CPU and memory resources due to the computational intensity of GPT-4 and DALL-E model calls.
+      
+    - Step 3: Finally, I reviewed whether any external dependencies, such as the Azure OpenAI endpoint or related services, were unavailable or experiencing intermittent issues. I observed some network-related delays during high-demand periods that were causing timeouts for the AI-Service.
+
+2. **Kubernetes Deployment**:
+   - Issue: Deploying multiple microservices to Kubernetes required careful configuration of Kubernetes resources, including Pods, Deployments, Services, ConfigMaps, and Secrets. Additionally, StatefulSets for MongoDB posed difficulties due to persistent volume provisioning.
+
+3. **CI/CD Pipeline Setup**:
+   - Setting up the CI/CD pipeline for each microservice was time-consuming due to configuring the build, test, and deployment steps for multiple services.
+   - Overcame with the using GitHub Actions workflows.
 
 ---
 
