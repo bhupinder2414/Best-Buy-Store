@@ -27,6 +27,10 @@ This is a demo cloud-native application for Best Buy's online store.
 
 ![Logical Application Architecture Diagram](Image.png)
 
+### Updated Architecture Diagram
+
+![Logical Application Architecture Diagram](Bestbuy.png)
+
 ---
 
 ## Microservices Development
